@@ -4,6 +4,9 @@
     <Filter Include="Hazal">
       <UniqueIdentifier>{15294D0D-813D-75BE-4ABF-181EB69271EF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Hazal\Events">
+      <UniqueIdentifier>{592BA12C-458E-30D1-EE13-6987DA55FC53}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Hazal.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="src\Hazal\EntryPoint.h">
       <Filter>Hazal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazal\Events\ApplicationEvent.h">
+      <Filter>Hazal\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazal\Events\Event.h">
+      <Filter>Hazal\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazal\Events\KeyEvent.h">
+      <Filter>Hazal\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazal\Events\MouseEvent.h">
+      <Filter>Hazal\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Hazal\Log.h">
       <Filter>Hazal</Filter>
