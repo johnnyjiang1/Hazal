@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include<sstream>
-
 namespace Hazal {
 	class HAZAL_API WindowResizeEvent : public Event
 	{

@@ -2,7 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
 
 namespace Hazal {
 	class HAZAL_API KeyEvent : public Event
