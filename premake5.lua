@@ -10,6 +10,12 @@ workspace "Hazal"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Hazal/vendor/GLFW/include"
+
+include "Hazal/vendor/GLFW"
+
 project "Hazal"
     location "Hazal"
     kind "SharedLib"
@@ -30,7 +36,14 @@ project "Hazal"
     includedirs
     {
         "%{prj.name}/src",
-        "%{prj.name}/vendor/spdlog/include"
+        "%{prj.name}/vendor/spdlog/include",
+        "%{IncludeDir.GLFW}"
+    }
+
+    links
+    {
+        "GLFW",
+        "opengl32.lib"
     }
 
     filter "system:windows"
@@ -51,14 +64,17 @@ project "Hazal"
 
     filter "configurations:Debug"
         defines "HAZAL_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
 
     filter "configurations:Release"
         defines "HAZAL_RELEASE"
+        buildoptions "/MD"
         symbols "On"
 
     filter "configurations:Dist"
         defines "HAZAL_DIST"
+        buildoptions "/MD"
         symbols "On"
 
 project "Sandbox"
@@ -98,12 +114,15 @@ project "Sandbox"
 
     filter "configurations:Debug"
         defines "HAZAL_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
 
     filter "configurations:Release"
         defines "HAZAL_RELEASE"
+        buildoptions "/MD"
         symbols "On"
 
     filter "configurations:Dist"
         defines "HAZAL_DIST"
+        buildoptions "/MD"
         symbols "On"
