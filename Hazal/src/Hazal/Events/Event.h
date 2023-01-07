@@ -1,5 +1,6 @@
 #pragma once
 
+#include "hzpch.h"
 #include "Hazal/Core.h"
 
 namespace Hazal {
