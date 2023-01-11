@@ -37,7 +37,7 @@
     <ClInclude Include="src\Hazal\Events\MouseEvent.h">
       <Filter>Hazal\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hazal\Layer.h">
+    <ClInclude Include="src\Hazal\LAYER.H">
       <Filter>Hazal</Filter>
     </ClInclude>
     <ClInclude Include="src\Hazal\LayerStack.h">
