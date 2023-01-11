@@ -37,6 +37,12 @@
     <ClInclude Include="src\Hazal\Events\MouseEvent.h">
       <Filter>Hazal\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Hazal\Layer.h">
+      <Filter>Hazal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazal\LayerStack.h">
+      <Filter>Hazal</Filter>
+    </ClInclude>
     <ClInclude Include="src\Hazal\Log.h">
       <Filter>Hazal</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Hazal\Application.cpp">
+      <Filter>Hazal</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazal\Layer.cpp">
+      <Filter>Hazal</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazal\LayerStack.cpp">
       <Filter>Hazal</Filter>
     </ClCompile>
     <ClCompile Include="src\Hazal\Log.cpp">
