@@ -5,3 +5,6 @@
 	path = Hazal/vendor/GLFW
 	url = https://github.com/glfw/glfw
 	branch = latest
+[submodule "Hazal/vendor/imgui"]
+	path = Hazal/vendor/imgui
+	url = https://github.com/ocornut/imgui
