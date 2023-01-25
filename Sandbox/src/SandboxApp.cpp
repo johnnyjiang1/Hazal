@@ -1,4 +1,4 @@
-#include<Hazal.h>
+#include <Hazal.h>
 
 class ExampleLayer : public Hazal::Layer
 {

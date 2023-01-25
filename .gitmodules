@@ -8,3 +8,6 @@
 [submodule "Hazal/vendor/imgui"]
 	path = Hazal/vendor/imgui
 	url = https://github.com/ocornut/imgui
+[submodule "Hazal/vendor/glm"]
+	path = Hazal/vendor/glm
+	url = https://github.com/g-truc/glm
