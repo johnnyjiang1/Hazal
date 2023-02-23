@@ -23,8 +23,10 @@ include "Hazal/vendor/imgui"
 
 project "Hazal"
     location "Hazal"
-    kind "SharedLib"
+    kind "StaticLib"
     language "C++"
+    cppdialect "C++20"
+    staticruntime "on"
     
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -35,10 +37,16 @@ project "Hazal"
     files
     {
         "%{prj.name}/src/**.h",
+        
         "%{prj.name}/src/**.cpp",
         "%{prj.name}/vendor/glm/glm/**.hpp",
         "%{prj.name}/vendor/glm/glm/**.inl"
     }
+
+    defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
 
     includedirs
     {
@@ -59,8 +67,6 @@ project "Hazal"
     }
 
     filter "system:windows"
-        cppdialect "C++20"
-        staticruntime "On"
         systemversion "latest"
 
         defines
@@ -70,30 +76,27 @@ project "Hazal"
             "GLFW_INCLUDE_NONE"
         }
 
-        postbuildcommands
-        {
-            ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .."/Sandbox")
-        }
-
     filter "configurations:Debug"
         defines "HAZAL_DEBUG"
         buildoptions "/MDd"
-        symbols "On"
+        symbols "on"
 
     filter "configurations:Release"
         defines "HAZAL_RELEASE"
         buildoptions "/MD"
-        symbols "On"
+        symbols "on"
 
     filter "configurations:Dist"
         defines "HAZAL_DIST"
         buildoptions "/MD"
-        symbols "On"
+        symbols "on"
 
 project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
     language "C++"
+    cppdialect "C++20"
+    staticruntime "on"
     
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -108,6 +111,7 @@ project "Sandbox"
     {
         "Hazal/vendor/spdlog/include",
         "Hazal/src",
+        "Hazal/vendor",
         "%{IncludeDir.glm}"
     }
 
@@ -117,8 +121,6 @@ project "Sandbox"
     }
 
     filter "system:windows"
-        cppdialect "C++20"
-        staticruntime "On"
         systemversion "latest"
 
         defines
@@ -129,14 +131,14 @@ project "Sandbox"
     filter "configurations:Debug"
         defines "HAZAL_DEBUG"
         buildoptions "/MDd"
-        symbols "On"
+        symbols "on"
 
     filter "configurations:Release"
         defines "HAZAL_RELEASE"
         buildoptions "/MD"
-        symbols "On"
+        symbols "on"
 
     filter "configurations:Dist"
         defines "HAZAL_DIST"
         buildoptions "/MD"
-        symbols "On"
+        symbols "on"

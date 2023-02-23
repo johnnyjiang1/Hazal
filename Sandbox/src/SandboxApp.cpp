@@ -1,5 +1,7 @@
 #include <Hazal.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public Hazal::Layer
 {
 public:
@@ -8,6 +10,13 @@ public:
 	void OnUpdate() override
 	{
 		// HAZAL_CLIENT_INFO("ExampleLayer::Update");
+	}
+
+	virtual void OnImGuiRender() override
+	{
+		// ImGui::Begin("Test");
+		// ImGui::Text("Hello World");
+		// ImGui::End();
 	}
 
 	void OnEvent(Hazal::Event& event) override
@@ -27,7 +36,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new(ExampleLayer));
-		PushOverlay(new Hazal::ImGuiLayer());
 	}
 
 	~Sandbox()

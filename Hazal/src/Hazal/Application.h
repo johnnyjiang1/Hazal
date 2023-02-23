@@ -7,6 +7,8 @@
 #include "Hazal/Events/Event.h"
 #include "Hazal/Events/ApplicationEvent.h"
 
+#include "Hazal/ImGui/ImGuiLayer.h"
+
 namespace Hazal {
 
 	class HAZAL_API Application
@@ -28,6 +30,7 @@ namespace Hazal {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:
