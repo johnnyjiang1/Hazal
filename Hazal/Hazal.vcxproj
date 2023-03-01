@@ -153,7 +153,9 @@
     <ClInclude Include="src\Hazal\LayerStack.h" />
     <ClInclude Include="src\Hazal\Log.h" />
     <ClInclude Include="src\Hazal\MouseButtonCodes.h" />
+    <ClInclude Include="src\Hazal\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Hazal\Window.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\hzpch.h" />
@@ -581,6 +583,7 @@
     <ClCompile Include="src\Hazal\Layer.cpp" />
     <ClCompile Include="src\Hazal\LayerStack.cpp" />
     <ClCompile Include="src\Hazal\Log.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\hzpch.cpp">

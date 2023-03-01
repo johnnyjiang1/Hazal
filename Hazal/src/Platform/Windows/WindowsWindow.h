@@ -1,8 +1,9 @@
 #pragma once
 
 #include "Hazal/Window.h"
+#include "Hazal/Renderer/GraphicsContext.h"
 
-#include "GLFW/glfw3.h"
+#include <GLFW/glfw3.h>
 
 namespace Hazal {
 
@@ -28,6 +29,7 @@ namespace Hazal {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{

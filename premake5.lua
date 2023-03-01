@@ -37,7 +37,6 @@ project "Hazal"
     files
     {
         "%{prj.name}/src/**.h",
-        
         "%{prj.name}/src/**.cpp",
         "%{prj.name}/vendor/glm/glm/**.hpp",
         "%{prj.name}/vendor/glm/glm/**.inl"

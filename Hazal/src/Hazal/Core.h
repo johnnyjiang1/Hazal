@@ -1,11 +1,15 @@
 #pragma once
 
 #ifdef HAZAL_PLATFORM_WINDOWS
+#if HAZAL_DYNAMIC_LINK
 	#ifdef HAZAL_BUILD_DLL
 		#define HAZAL_API __declspec(dllexport)
 	#else
 		#define HAZAL_API __declspec(dllimport)
 	#endif
+#else
+#define HAZAL_API
+#endif
 #else
 	#error Hazal only supports Windows
 #endif
