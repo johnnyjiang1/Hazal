@@ -25,7 +25,7 @@ public:
 		if (event.GetEventType() == Hazal::EventType::KeyPressed)
 		{
 			Hazal::KeyPressedEvent& e = (Hazal::KeyPressedEvent&)event;
-			HAZAL_CORE_TRACE("{0}", (char) e.GetKeyCode());
+			// HAZAL_CORE_TRACE("{0}", (char) e.GetKeyCode());
 		}
 	}
 };
