@@ -9,6 +9,8 @@
 
 #include "Hazal/ImGui/ImGuiLayer.h"
 
+#include "Renderer/Shader.h"
+
 namespace Hazal {
 
 	class HAZAL_API Application
@@ -35,6 +37,7 @@ namespace Hazal {
 		LayerStack m_LayerStack;
 
 		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		std::unique_ptr<Shader> m_Shader;
 	private:
 		static Application* s_Instance;
 	};
