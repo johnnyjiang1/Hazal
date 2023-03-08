@@ -1359,6 +1359,10 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\Hazal\Renderer\Buffer.h" />
+    <ClInclude Include="src\Hazal\Renderer\Shader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Hazal\Renderer\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Hazal\Application.cpp">
@@ -1391,5 +1395,9 @@
     <ClCompile Include="src\hzpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Hazal\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Hazal\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Hazal\Renderer\Renderer.cpp" />
   </ItemGroup>
 </Project>
