@@ -141,6 +141,7 @@
     <ClInclude Include="src\Hazal.h" />
     <ClInclude Include="src\Hazal\Application.h" />
     <ClInclude Include="src\Hazal\Core.h" />
+    <ClInclude Include="src\Hazal\Core\Timestep.h" />
     <ClInclude Include="src\Hazal\EntryPoint.h" />
     <ClInclude Include="src\Hazal\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Hazal\Events\Event.h" />

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Hazal/Core.h"
+#include "Hazal/Core/Timestep.h"
 #include "Hazal/Events/Event.h"
 
 namespace Hazal
@@ -13,7 +14,7 @@ namespace Hazal
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

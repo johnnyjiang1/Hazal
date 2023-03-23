@@ -6,6 +6,8 @@
 #include "Hazal/Layer.h"
 #include "Hazal/Log.h"
 
+#include "Hazal/Core/Timestep.h"
+
 #include "Hazal/Input.h"
 #include "Hazal/KeyCode.h"
 #include "Hazal/MouseButtonCodes.h"

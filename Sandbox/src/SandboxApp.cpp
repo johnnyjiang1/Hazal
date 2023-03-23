@@ -120,21 +120,21 @@ public:
 		m_Shader2.reset(new Hazal::Shader(vertexSrc2, fragmentSrc2));
 	}
 
-	void OnUpdate() override
+	void OnUpdate(Hazal::Timestep ts) override
 	{
 		if (Hazal::Input::IsKeyPressed(HAZAL_KEY_LEFT))
-			m_CameraPosition.x -= m_CameraMoveSpeed;
+			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
 		else if (Hazal::Input::IsKeyPressed(HAZAL_KEY_RIGHT))
-			m_CameraPosition.x += m_CameraMoveSpeed;
+			m_CameraPosition.x += m_CameraMoveSpeed * ts;
 		if (Hazal::Input::IsKeyPressed(HAZAL_KEY_UP))
-			m_CameraPosition.y += m_CameraMoveSpeed;
+			m_CameraPosition.y += m_CameraMoveSpeed * ts;
 		else if (Hazal::Input::IsKeyPressed(HAZAL_KEY_DOWN))
-			m_CameraPosition.y -= m_CameraMoveSpeed;
+			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
 
 		if (Hazal::Input::IsKeyPressed(HAZAL_KEY_A))
-			m_CameraRotation += m_CameraRotationSpeed;
+			m_CameraRotation += m_CameraRotationSpeed * ts;
 		else if (Hazal::Input::IsKeyPressed(HAZAL_KEY_D))
-			m_CameraRotation -= m_CameraRotationSpeed;
+			m_CameraRotation -= m_CameraRotationSpeed * ts;
 
 		Hazal::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Hazal::RenderCommand::Clear();
@@ -170,10 +170,10 @@ private:
 
 	Hazal::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
-	float m_CameraMoveSpeed = 0.1f;
+	float m_CameraMoveSpeed = 1.0f;
 	
 	float m_CameraRotation = 0.0f;
-	float m_CameraRotationSpeed = 0.1f;
+	float m_CameraRotationSpeed = 10.0f;
 };
 
 class Sandbox : public Hazal::Application

@@ -7,13 +7,9 @@
 #include "Hazal/Events/Event.h"
 #include "Hazal/Events/ApplicationEvent.h"
 
+#include "Hazal/Core/Timestep.h"
+
 #include "Hazal/ImGui/ImGuiLayer.h"
-
-#include "Renderer/Shader.h"
-#include "Renderer/Buffer.h"
-#include "Renderer/VertexArray.h"
-
-#include "Hazal/Renderer/OrthographicCamera.h"
 
 namespace Hazal {
 
@@ -34,11 +30,12 @@ namespace Hazal {
 		inline static Application& Get() { return *s_Instance; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
-
+	private:
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
 	};
