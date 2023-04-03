@@ -2,6 +2,8 @@
 
 #include "imgui/imgui.h"
 
+#include <glm/gtc/matrix_transform.hpp>
+
 class ExampleLayer : public Hazal::Layer
 {
 public:
@@ -37,10 +39,10 @@ public:
 		m_SquareVA.reset(Hazal::VertexArray::Create());
 
 		float square_vertices[] = {
-			-0.75f, -0.75f, 0.0f,
-			 0.75f, -0.75f, 0.0f,
-			 0.75f,  0.75f, 0.0f,
-			-0.75f,  0.75f, 0.0f
+			-0.5f, -0.5f, 0.0f,
+			 0.5f, -0.5f, 0.0f,
+			 0.5f,  0.5f, 0.0f,
+			-0.5f,  0.5f, 0.0f
 		};
 
 		std::shared_ptr<Hazal::VertexBuffer> squareVB;
@@ -65,13 +67,14 @@ public:
 			layout(location=1) in vec4 a_Color;
 
 			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
 
 			out vec4 v_Color;
 
 			void main()
 			{
 				v_Color = a_Color;
-				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
 			}
 
 		)";
@@ -98,10 +101,11 @@ public:
 			layout(location=0) in vec3 a_Position;
 
 			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
 
 			void main()
 			{
-				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
 			}
 
 		)";
@@ -144,7 +148,15 @@ public:
 
 		Hazal::Renderer::BeginScene(m_Camera);
 
-		Hazal::Renderer::Submit(m_Shader2, m_SquareVA);
+		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
+
+		for (int i = 0; i < 20; ++i)
+			for (int j = 0; j < 20; ++j)
+			{
+				glm::vec3 pos(i * 0.11f, j * 0.11f, 0.0f);
+				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
+				Hazal::Renderer::Submit(m_Shader2, m_SquareVA, transform);
+			}
 		Hazal::Renderer::Submit(m_Shader, m_VertexArray);
 
 		Hazal::Renderer::EndScene();
@@ -170,10 +182,11 @@ private:
 
 	Hazal::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
-	float m_CameraMoveSpeed = 1.0f;
+	float m_CameraMoveSpeed = 5.0f;
 	
 	float m_CameraRotation = 0.0f;
 	float m_CameraRotationSpeed = 10.0f;
+
 };
 
 class Sandbox : public Hazal::Application
