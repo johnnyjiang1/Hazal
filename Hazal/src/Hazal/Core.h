@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #ifdef HAZAL_PLATFORM_WINDOWS
 #if HAZAL_DYNAMIC_LINK
 	#ifdef HAZAL_BUILD_DLL
@@ -25,3 +27,12 @@
 #define BIT(x) (1 << x)
 
 #define HAZAL_BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
+
+namespace Hazal {
+
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+}

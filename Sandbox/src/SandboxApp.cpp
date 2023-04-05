@@ -20,8 +20,8 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
 
-		std::shared_ptr<Hazal::VertexBuffer> vertexBuffer;
-		std::shared_ptr<Hazal::IndexBuffer> indexBuffer;
+		Hazal::Ref<Hazal::VertexBuffer> vertexBuffer;
+		Hazal::Ref<Hazal::IndexBuffer> indexBuffer;
 		vertexBuffer.reset(Hazal:: VertexBuffer::Create(vertices, sizeof(vertices)));
 
 		Hazal::BufferLayout layout = {
@@ -48,7 +48,7 @@ public:
 			-0.5f,  0.5f, 0.0f
 		};
 
-		std::shared_ptr<Hazal::VertexBuffer> squareVB;
+		Hazal::Ref<Hazal::VertexBuffer> squareVB;
 		squareVB.reset(Hazal::VertexBuffer::Create(square_vertices, sizeof(square_vertices)));
 		squareVB->SetLayout({
 			{ Hazal::ShaderDataType::Float3, "a_Position" }
@@ -59,7 +59,7 @@ public:
 			0, 1, 2,
 			2, 3, 0
 		};
-		std::shared_ptr<Hazal::IndexBuffer> squareIB;
+		Hazal::Ref<Hazal::IndexBuffer> squareIB;
 		squareIB.reset(Hazal::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -184,11 +184,11 @@ public:
 
 	}
 private:
-	std::shared_ptr<Hazal::Shader> m_Shader;
-	std::shared_ptr<Hazal::Shader> m_Shader2;
+	Hazal::Ref<Hazal::Shader> m_Shader;
+	Hazal::Ref<Hazal::Shader> m_Shader2;
 
-	std::shared_ptr<Hazal::VertexArray> m_VertexArray;
-	std::shared_ptr<Hazal::VertexArray> m_SquareVA;
+	Hazal::Ref<Hazal::VertexArray> m_VertexArray;
+	Hazal::Ref<Hazal::VertexArray> m_SquareVA;
 
 	Hazal::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
