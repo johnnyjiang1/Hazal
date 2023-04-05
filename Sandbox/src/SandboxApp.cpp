@@ -3,6 +3,9 @@
 #include "imgui/imgui.h"
 
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
+#include "Platform/OpenGL/OpenGLShader.h"
 
 class ExampleLayer : public Hazal::Layer
 {
@@ -93,7 +96,7 @@ public:
 
 		)";
 
-		m_Shader.reset(new Hazal::Shader(vertexSrc, fragmentSrc));
+		m_Shader.reset(Hazal::Shader::Create(vertexSrc, fragmentSrc));
 
 		std::string vertexSrc2 = R"(
 			#version 330 core
@@ -114,15 +117,15 @@ public:
 			#version 330 core
 			
 			layout(location=0) out vec4 color;
-			uniform vec4 u_Color;
+			uniform vec3 u_Color;
 
 			void main()
 			{
-				color = u_Color;
+				color = vec4(u_Color, 1.0);
 			}
 
 		)";
-		m_Shader2.reset(new Hazal::Shader(vertexSrc2, fragmentSrc2));
+		m_Shader2.reset(Hazal::Shader::Create(vertexSrc2, fragmentSrc2));
 	}
 
 	void OnUpdate(Hazal::Timestep ts) override
@@ -154,13 +157,14 @@ public:
 		glm::vec4 redColor(0.8f, 0.2f, 0.3f, 1.0f);
 		glm::vec4 blueColor(0.2f, 0.3f, 0.8f, 1.0f);
 
+		std::dynamic_pointer_cast<Hazal::OpenGLShader>(m_Shader2)->Bind();
+		std::dynamic_pointer_cast<Hazal::OpenGLShader>(m_Shader2)->UploadUniformFloat3("u_Color", m_SquareColor);
+
 		for (int i = 0; i < 20; ++i)
 			for (int j = 0; j < 20; ++j)
 			{
 				glm::vec3 pos(i * 0.11f, j * 0.11f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-				if (j % 2 == 0) m_Shader2->UploadUniformFloat4("u_Color", redColor);
-				else m_Shader2->UploadUniformFloat4("u_Color", blueColor);
 				Hazal::Renderer::Submit(m_Shader2, m_SquareVA, transform);
 			}
 		Hazal::Renderer::Submit(m_Shader, m_VertexArray);
@@ -170,8 +174,8 @@ public:
 
 	virtual void OnImGuiRender() override
 	{
-		ImGui::Begin("Test");
-		ImGui::Text("Hello World");
+		ImGui::Begin("Settings");
+		ImGui::ColorEdit3("Square Color", glm::value_ptr(m_SquareColor));
 		ImGui::End();
 	}
 
@@ -193,6 +197,7 @@ private:
 	float m_CameraRotation = 0.0f;
 	float m_CameraRotationSpeed = 10.0f;
 
+	glm::vec3 m_SquareColor = { 0.2f, 0.3f, 0.8f };
 };
 
 class Sandbox : public Hazal::Application
