@@ -10,6 +10,8 @@ namespace Hazal {
 	class Renderer
 	{
 	public:
+		static void Init();
+
 		static void BeginScene(OrthographicCamera& cmaera);
 		static void EndScene();
 
