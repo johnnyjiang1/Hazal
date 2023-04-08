@@ -42,16 +42,17 @@ public:
 		m_SquareVA.reset(Hazal::VertexArray::Create());
 
 		float square_vertices[] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
 		Hazal::Ref<Hazal::VertexBuffer> squareVB;
 		squareVB.reset(Hazal::VertexBuffer::Create(square_vertices, sizeof(square_vertices)));
 		squareVB->SetLayout({
-			{ Hazal::ShaderDataType::Float3, "a_Position" }
+			{ Hazal::ShaderDataType::Float3, "a_Position" },
+			{ Hazal::ShaderDataType::Float2, "a_TexCoord" }
 			});
 		m_SquareVA->AddVertexBuffer(squareVB);
 
@@ -98,34 +99,46 @@ public:
 
 		m_Shader.reset(Hazal::Shader::Create(vertexSrc, fragmentSrc));
 
-		std::string vertexSrc2 = R"(
+		std::string textureShaderVertexSrc = R"(
 			#version 330 core
 			
 			layout(location=0) in vec3 a_Position;
+			layout(location=1) in vec2 a_TexCoord;
 
 			uniform mat4 u_ViewProjection;
 			uniform mat4 u_Transform;
 
+			out vec2 v_TexCoord;
+
 			void main()
 			{
+				v_TexCoord = a_TexCoord;
 				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
 			}
 
 		)";
 
-		std::string fragmentSrc2 = R"(
+		std::string textureShaderFragmentSrc = R"(
 			#version 330 core
 			
 			layout(location=0) out vec4 color;
-			uniform vec3 u_Color;
+
+			in vec2 v_TexCoord;
+
+			uniform sampler2D u_Texture;
 
 			void main()
 			{
-				color = vec4(u_Color, 1.0);
+				color = texture(u_Texture, v_TexCoord);
 			}
 
 		)";
-		m_Shader2.reset(Hazal::Shader::Create(vertexSrc2, fragmentSrc2));
+		m_TextureShader.reset(Hazal::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
+
+		m_Texture = Hazal::Texture2D::Create("assets/textures/Checkerboard.png");
+
+		std::dynamic_pointer_cast<Hazal::OpenGLShader>(m_TextureShader)->Bind();
+		std::dynamic_pointer_cast<Hazal::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Hazal::Timestep ts) override
@@ -157,17 +170,22 @@ public:
 		glm::vec4 redColor(0.8f, 0.2f, 0.3f, 1.0f);
 		glm::vec4 blueColor(0.2f, 0.3f, 0.8f, 1.0f);
 
-		std::dynamic_pointer_cast<Hazal::OpenGLShader>(m_Shader2)->Bind();
-		std::dynamic_pointer_cast<Hazal::OpenGLShader>(m_Shader2)->UploadUniformFloat3("u_Color", m_SquareColor);
+		// std::dynamic_pointer_cast<Hazal::OpenGLShader>(m_Shader2)->Bind();
+		// std::dynamic_pointer_cast<Hazal::OpenGLShader>(m_Shader2)->UploadUniformFloat3("u_Color", m_SquareColor);
 
-		for (int i = 0; i < 20; ++i)
+		/*for (int i = 0; i < 20; ++i)
 			for (int j = 0; j < 20; ++j)
 			{
 				glm::vec3 pos(i * 0.11f, j * 0.11f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
 				Hazal::Renderer::Submit(m_Shader2, m_SquareVA, transform);
-			}
-		Hazal::Renderer::Submit(m_Shader, m_VertexArray);
+			}*/
+		
+		m_Texture->Bind();
+		Hazal::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
+		// Triangle
+		// Hazal::Renderer::Submit(m_Shader, m_VertexArray);
 
 		Hazal::Renderer::EndScene();
 	}
@@ -185,10 +203,12 @@ public:
 	}
 private:
 	Hazal::Ref<Hazal::Shader> m_Shader;
-	Hazal::Ref<Hazal::Shader> m_Shader2;
+	Hazal::Ref<Hazal::Shader> m_TextureShader;
 
 	Hazal::Ref<Hazal::VertexArray> m_VertexArray;
 	Hazal::Ref<Hazal::VertexArray> m_SquareVA;
+
+	Hazal::Ref<Hazal::Texture2D> m_Texture;
 
 	Hazal::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;

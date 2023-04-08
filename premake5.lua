@@ -16,6 +16,7 @@ IncludeDir["GLFW"] = "Hazal/vendor/GLFW/include"
 IncludeDir["Glad"] = "Hazal/vendor/Glad/include"
 IncludeDir["ImGui"] = "Hazal/vendor/imgui"
 IncludeDir["glm"] = "Hazal/vendor/glm"
+IncludeDir["stb_image"] = "Hazal/vendor/stb_image"
 
 include "Hazal/vendor/GLFW"
 include "Hazal/vendor/Glad"
@@ -38,6 +39,8 @@ project "Hazal"
     {
         "%{prj.name}/src/**.h",
         "%{prj.name}/src/**.cpp",
+        "%{prj.name}/vendor/stb_image/**.h",
+        "%{prj.name}/vendor/stb_image/**.cpp",
         "%{prj.name}/vendor/glm/glm/**.hpp",
         "%{prj.name}/vendor/glm/glm/**.inl"
     }
@@ -54,7 +57,8 @@ project "Hazal"
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.Glad}",
         "%{IncludeDir.ImGui}",
-        "%{IncludeDir.glm}"
+        "%{IncludeDir.glm}",
+        "%{IncludeDir.stb_image}"
     }
 
     links
