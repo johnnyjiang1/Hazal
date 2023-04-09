@@ -5,6 +5,16 @@
 #include "Platform/OpenGL/OpenGLShader.h"
 
 namespace Hazal {
+	Shader* Shader::Create(const std::string& filepath)
+	{
+		switch (Renderer::GetAPI())
+		{
+		case RendererAPI::API::None: HAZAL_CORE_ASSERT(false, "RendererAPI::None is currently not supported."); return nullptr;
+		case RendererAPI::API::OpenGL: return new OpenGLShader(filepath);
+		}
+		HAZAL_CORE_ASSERT(false, "Unknown RendererAPI");
+		return nullptr;
+	}
 
 	Shader* Shader::Create(const std::string& vertexSrc, const std::string& fragmentSrc)
 	{
@@ -13,7 +23,7 @@ namespace Hazal {
 		case RendererAPI::API::None: HAZAL_CORE_ASSERT(false, "RendererAPI::None is currently not supported."); return nullptr;
 		case RendererAPI::API::OpenGL: return new OpenGLShader(vertexSrc, fragmentSrc);
 		}
-		HAZAL_CORE_ASSERT(false, "Unknown ShaderAPI");
+		HAZAL_CORE_ASSERT(false, "Unknown RendererAPI");
 		return nullptr;
 	}
 

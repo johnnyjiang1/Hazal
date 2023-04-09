@@ -64,76 +64,7 @@ public:
 		squareIB.reset(Hazal::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
-		std::string vertexSrc = R"(
-			#version 330 core
-			
-			layout(location=0) in vec3 a_Position;
-			layout(location=1) in vec4 a_Color;
-
-			uniform mat4 u_ViewProjection;
-			uniform mat4 u_Transform;
-
-			out vec4 v_Color;
-
-			void main()
-			{
-				v_Color = a_Color;
-				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
-			}
-
-		)";
-
-		std::string fragmentSrc = R"(
-			#version 330 core
-			
-			layout(location=0) out vec4 color;
-
-			in vec4 v_Color;
-
-			void main()
-			{
-				color = v_Color;
-			}
-
-		)";
-
-		m_Shader.reset(Hazal::Shader::Create(vertexSrc, fragmentSrc));
-
-		std::string textureShaderVertexSrc = R"(
-			#version 330 core
-			
-			layout(location=0) in vec3 a_Position;
-			layout(location=1) in vec2 a_TexCoord;
-
-			uniform mat4 u_ViewProjection;
-			uniform mat4 u_Transform;
-
-			out vec2 v_TexCoord;
-
-			void main()
-			{
-				v_TexCoord = a_TexCoord;
-				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
-			}
-
-		)";
-
-		std::string textureShaderFragmentSrc = R"(
-			#version 330 core
-			
-			layout(location=0) out vec4 color;
-
-			in vec2 v_TexCoord;
-
-			uniform sampler2D u_Texture;
-
-			void main()
-			{
-				color = texture(u_Texture, v_TexCoord);
-			}
-
-		)";
-		m_TextureShader.reset(Hazal::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
+		m_TextureShader.reset(Hazal::Shader::Create("assets/shaders/Texture.glsl"));
 
 		m_Texture = Hazal::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_ChernoLogoTexture = Hazal::Texture2D::Create("assets/textures/ChernoLogo.png");
@@ -165,30 +96,11 @@ public:
 		m_Camera.SetRotation(m_CameraRotation);
 
 		Hazal::Renderer::BeginScene(m_Camera);
-
-		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
-
-		glm::vec4 redColor(0.8f, 0.2f, 0.3f, 1.0f);
-		glm::vec4 blueColor(0.2f, 0.3f, 0.8f, 1.0f);
-
-		// std::dynamic_pointer_cast<Hazal::OpenGLShader>(m_Shader2)->Bind();
-		// std::dynamic_pointer_cast<Hazal::OpenGLShader>(m_Shader2)->UploadUniformFloat3("u_Color", m_SquareColor);
-
-		/*for (int i = 0; i < 20; ++i)
-			for (int j = 0; j < 20; ++j)
-			{
-				glm::vec3 pos(i * 0.11f, j * 0.11f, 0.0f);
-				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-				Hazal::Renderer::Submit(m_Shader2, m_SquareVA, transform);
-			}*/
 		
 		m_Texture->Bind();
 		Hazal::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		m_ChernoLogoTexture->Bind();
 		Hazal::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
-
-		// Triangle
-		// Hazal::Renderer::Submit(m_Shader, m_VertexArray);
 
 		Hazal::Renderer::EndScene();
 	}
