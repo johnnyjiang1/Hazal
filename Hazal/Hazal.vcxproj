@@ -154,6 +154,7 @@
     <ClInclude Include="src\Hazal\LayerStack.h" />
     <ClInclude Include="src\Hazal\Log.h" />
     <ClInclude Include="src\Hazal\MouseButtonCodes.h" />
+    <ClInclude Include="src\Hazal\OrthographicCameraController.h" />
     <ClInclude Include="src\Hazal\Renderer\Buffer.h" />
     <ClInclude Include="src\Hazal\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Hazal\Renderer\OrthographicCamera.h" />
@@ -598,6 +599,7 @@
     <ClCompile Include="src\Hazal\Layer.cpp" />
     <ClCompile Include="src\Hazal\LayerStack.cpp" />
     <ClCompile Include="src\Hazal\Log.cpp" />
+    <ClCompile Include="src\Hazal\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Hazal\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Hazal\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Hazal\Renderer\RenderCommand.cpp" />

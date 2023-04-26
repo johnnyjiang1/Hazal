@@ -23,7 +23,7 @@
 #include "Hazal/Renderer/Texture.h"
 #include "Hazal/Renderer/VertexArray.h"
 
-#include "Hazal/Renderer/OrthographicCamera.h"
+#include "Hazal/OrthographicCameraController.h"
 // -----------------------
 
 // ------Entry Point------
