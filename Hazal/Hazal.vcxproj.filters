@@ -57,17 +57,38 @@
     <ClInclude Include="src\Hazal.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hazal\Application.h">
-      <Filter>src\Hazal</Filter>
+    <ClInclude Include="src\Hazal\Core\Application.h">
+      <Filter>src\Hazal\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hazal\Core.h">
-      <Filter>src\Hazal</Filter>
+    <ClInclude Include="src\Hazal\Core\Core.h">
+      <Filter>src\Hazal\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazal\Core\EntryPoint.h">
+      <Filter>src\Hazal\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazal\Core\Input.h">
+      <Filter>src\Hazal\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazal\Core\KeyCode.h">
+      <Filter>src\Hazal\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazal\Core\Layer.h">
+      <Filter>src\Hazal\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazal\Core\LayerStack.h">
+      <Filter>src\Hazal\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazal\Core\Log.h">
+      <Filter>src\Hazal\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazal\Core\MouseButtonCodes.h">
+      <Filter>src\Hazal\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Hazal\Core\Timestep.h">
       <Filter>src\Hazal\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hazal\EntryPoint.h">
-      <Filter>src\Hazal</Filter>
+    <ClInclude Include="src\Hazal\Core\Window.h">
+      <Filter>src\Hazal\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Hazal\Events\ApplicationEvent.h">
       <Filter>src\Hazal\Events</Filter>
@@ -84,24 +105,6 @@
     <ClInclude Include="src\Hazal\ImGui\ImGuiLayer.h">
       <Filter>src\Hazal\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hazal\Input.h">
-      <Filter>src\Hazal</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Hazal\KeyCode.h">
-      <Filter>src\Hazal</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Hazal\Layer.h">
-      <Filter>src\Hazal</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Hazal\LayerStack.h">
-      <Filter>src\Hazal</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Hazal\Log.h">
-      <Filter>src\Hazal</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Hazal\MouseButtonCodes.h">
-      <Filter>src\Hazal</Filter>
-    </ClInclude>
     <ClInclude Include="src\Hazal\Renderer\Buffer.h">
       <Filter>src\Hazal\Renderer</Filter>
     </ClInclude>
@@ -109,6 +112,9 @@
       <Filter>src\Hazal\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Hazal\Renderer\OrthographicCamera.h">
+      <Filter>src\Hazal\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazal\Renderer\OrthographicCameraController.h">
       <Filter>src\Hazal\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Hazal\Renderer\RenderCommand.h">
@@ -128,9 +134,6 @@
     </ClInclude>
     <ClInclude Include="src\Hazal\Renderer\VertexArray.h">
       <Filter>src\Hazal\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Hazal\Window.h">
-      <Filter>src\Hazal</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
@@ -1412,8 +1415,17 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Hazal\Application.cpp">
-      <Filter>src\Hazal</Filter>
+    <ClCompile Include="src\Hazal\Core\Application.cpp">
+      <Filter>src\Hazal\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazal\Core\Layer.cpp">
+      <Filter>src\Hazal\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazal\Core\LayerStack.cpp">
+      <Filter>src\Hazal\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazal\Core\Log.cpp">
+      <Filter>src\Hazal\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Hazal\ImGui\ImGuiBuild.cpp">
       <Filter>src\Hazal\ImGui</Filter>
@@ -1421,19 +1433,13 @@
     <ClCompile Include="src\Hazal\ImGui\ImGuiLayer.cpp">
       <Filter>src\Hazal\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="src\Hazal\Layer.cpp">
-      <Filter>src\Hazal</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Hazal\LayerStack.cpp">
-      <Filter>src\Hazal</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Hazal\Log.cpp">
-      <Filter>src\Hazal</Filter>
-    </ClCompile>
     <ClCompile Include="src\Hazal\Renderer\Buffer.cpp">
       <Filter>src\Hazal\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Hazal\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Hazal\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazal\Renderer\OrthographicCameraController.cpp">
       <Filter>src\Hazal\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Hazal\Renderer\RenderCommand.cpp">

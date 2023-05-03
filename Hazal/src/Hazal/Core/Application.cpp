@@ -1,6 +1,6 @@
 #include "hzpch.h"
 #include "Application.h"
-#include "Hazal/Core.h"
+#include "Hazal/Core/Core.h"
 
 #include "Hazal/Renderer/Renderer.h"
 

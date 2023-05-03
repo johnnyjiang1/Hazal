@@ -139,32 +139,32 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Hazal.h" />
-    <ClInclude Include="src\Hazal\Application.h" />
-    <ClInclude Include="src\Hazal\Core.h" />
+    <ClInclude Include="src\Hazal\Core\Application.h" />
+    <ClInclude Include="src\Hazal\Core\Core.h" />
+    <ClInclude Include="src\Hazal\Core\EntryPoint.h" />
+    <ClInclude Include="src\Hazal\Core\Input.h" />
+    <ClInclude Include="src\Hazal\Core\KeyCode.h" />
+    <ClInclude Include="src\Hazal\Core\Layer.h" />
+    <ClInclude Include="src\Hazal\Core\LayerStack.h" />
+    <ClInclude Include="src\Hazal\Core\Log.h" />
+    <ClInclude Include="src\Hazal\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Hazal\Core\Timestep.h" />
-    <ClInclude Include="src\Hazal\EntryPoint.h" />
+    <ClInclude Include="src\Hazal\Core\Window.h" />
     <ClInclude Include="src\Hazal\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Hazal\Events\Event.h" />
     <ClInclude Include="src\Hazal\Events\KeyEvent.h" />
     <ClInclude Include="src\Hazal\Events\MouseEvent.h" />
     <ClInclude Include="src\Hazal\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\Hazal\Input.h" />
-    <ClInclude Include="src\Hazal\KeyCode.h" />
-    <ClInclude Include="src\Hazal\Layer.h" />
-    <ClInclude Include="src\Hazal\LayerStack.h" />
-    <ClInclude Include="src\Hazal\Log.h" />
-    <ClInclude Include="src\Hazal\MouseButtonCodes.h" />
-    <ClInclude Include="src\Hazal\OrthographicCameraController.h" />
     <ClInclude Include="src\Hazal\Renderer\Buffer.h" />
     <ClInclude Include="src\Hazal\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Hazal\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Hazal\Renderer\OrthographicCameraController.h" />
     <ClInclude Include="src\Hazal\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Hazal\Renderer\Renderer.h" />
     <ClInclude Include="src\Hazal\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Hazal\Renderer\Shader.h" />
     <ClInclude Include="src\Hazal\Renderer\Texture.h" />
     <ClInclude Include="src\Hazal\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Hazal\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
@@ -593,15 +593,15 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Hazal\Application.cpp" />
+    <ClCompile Include="src\Hazal\Core\Application.cpp" />
+    <ClCompile Include="src\Hazal\Core\Layer.cpp" />
+    <ClCompile Include="src\Hazal\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Hazal\Core\Log.cpp" />
     <ClCompile Include="src\Hazal\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Hazal\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Hazal\Layer.cpp" />
-    <ClCompile Include="src\Hazal\LayerStack.cpp" />
-    <ClCompile Include="src\Hazal\Log.cpp" />
-    <ClCompile Include="src\Hazal\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Hazal\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Hazal\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="src\Hazal\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Hazal\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Hazal\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Hazal\Renderer\RendererAPI.cpp" />

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Hazal/Core.h"
+#include "Hazal/Core/Core.h"
 #include "Layer.h"
 
 #include <vector>

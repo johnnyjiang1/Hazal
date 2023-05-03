@@ -1,8 +1,8 @@
 #include "hzpch.h"
 #include "OrthographicCameraController.h"
 
-#include "Hazal/Input.h"
-#include "Hazal/KeyCode.h"
+#include "Hazal/Core/Input.h"
+#include "Hazal/Core/KeyCode.h"
 
 namespace Hazal {
 

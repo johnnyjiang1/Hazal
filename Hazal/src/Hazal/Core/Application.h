@@ -3,7 +3,7 @@
 #include "Core.h"
 
 #include "Window.h"
-#include "Hazal/LayerStack.h"
+#include "Hazal/Core/LayerStack.h"
 #include "Hazal/Events/Event.h"
 #include "Hazal/Events/ApplicationEvent.h"
 

@@ -2,7 +2,7 @@
 
 #include "hzpch.h"
 
-#include "Hazal/Core.h"
+#include "Hazal/Core/Core.h"
 #include "Hazal/Events/Event.h"
 
 namespace Hazal {

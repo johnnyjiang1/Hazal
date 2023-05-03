@@ -2,7 +2,7 @@
 #include "WindowsInput.h"
 
 #include <GLFW/glfw3.h>
-#include "Hazal/Application.h"
+#include "Hazal/Core/Application.h"
 
 namespace Hazal {
 

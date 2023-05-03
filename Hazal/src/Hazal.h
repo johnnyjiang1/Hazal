@@ -2,15 +2,15 @@
 
 // For use by Hazal applications
 
-#include "Hazal/Application.h"
-#include "Hazal/Layer.h"
-#include "Hazal/Log.h"
+#include "Hazal/Core/Application.h"
+#include "Hazal/Core/Layer.h"
+#include "Hazal/Core/Log.h"
 
 #include "Hazal/Core/Timestep.h"
 
-#include "Hazal/Input.h"
-#include "Hazal/KeyCode.h"
-#include "Hazal/MouseButtonCodes.h"
+#include "Hazal/Core/Input.h"
+#include "Hazal/Core/KeyCode.h"
+#include "Hazal/Core/MouseButtonCodes.h"
 
 #include "Hazal/ImGui/ImGuiLayer.h"
 
@@ -23,9 +23,9 @@
 #include "Hazal/Renderer/Texture.h"
 #include "Hazal/Renderer/VertexArray.h"
 
-#include "Hazal/OrthographicCameraController.h"
+#include "Hazal/Renderer/OrthographicCameraController.h"
 // -----------------------
 
 // ------Entry Point------
-#include "Hazal/EntryPoint.h"
+#include "Hazal/Core/EntryPoint.h"
 // -----------------------

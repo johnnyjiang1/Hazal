@@ -1,7 +1,7 @@
 #pragma once
 
 #include "hzpch.h"
-#include "Hazal/Core.h"
+#include "Hazal/Core/Core.h"
 
 namespace Hazal {
 	// Events in Hazal are currently blocking, meaning when an event occurs it

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Hazal/Input.h"
+#include "Hazal/Core/Input.h"
 namespace Hazal {
 
 	class WindowsInput : public Input

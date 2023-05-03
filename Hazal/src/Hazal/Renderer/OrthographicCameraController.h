@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Renderer/OrthographicCamera.h"
+#include "Hazal/Renderer/OrthographicCamera.h"
 #include "Hazal/Core/Timestep.h"
 
 #include "Hazal/Events/ApplicationEvent.h"
