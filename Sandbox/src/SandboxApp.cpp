@@ -99,9 +99,9 @@ public:
 		ImGui::End();
 	}
 
-	void OnEvent(Hazal::Event& event) override
+	void OnEvent(Hazal::Event& e) override
 	{
-		m_CameraController.OnEvent(event);
+		m_CameraController.OnEvent(e);
 	}
 private:
 	Hazal::ShaderLibrary m_ShaderLibrary;

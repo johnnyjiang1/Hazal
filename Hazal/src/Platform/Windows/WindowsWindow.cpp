@@ -37,11 +37,9 @@ namespace Hazal {
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
 
-		// HAZAL_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
-
 		if (!s_GLFWInitialized)
 		{
-			// TODO: gldwTerminate on system shutdown
+			// TODO: glfwTerminate on system shutdown
 			int success = glfwInit();
 			HAZAL_CORE_ASSERT(success, "Could not initialize GLFW!");
 			glfwSetErrorCallback(GLFWErrorCallback);
