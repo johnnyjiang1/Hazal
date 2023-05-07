@@ -126,11 +126,6 @@ project "Sandbox"
     filter "system:windows"
         systemversion "latest"
 
-        defines
-        {
-            "HAZAL_PLATFORM_WINDOWS"
-        }
-
     filter "configurations:Debug"
         defines "HAZAL_DEBUG"
         buildoptions "/MDd"

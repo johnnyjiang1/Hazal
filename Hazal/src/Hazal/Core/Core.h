@@ -2,18 +2,46 @@
 
 #include <memory>
 
+#ifdef _WIN32
+#ifdef _WIN64
+#define HAZAL_PLATFORM_WINDOWS
+#else
+#error "x86 builds are not supported"
+#endif
+#elif defined(__APPLE__) || defined(__MACH__)
+#include <TargeConditionals.h>
+#if TARGET_IPHONE_SIMULATOR == 1
+#error "IOS simulator is not supported"
+#elif TARGET_OS_PHONE == 1
+#define HAZAL_PLATFORM_IOS
+#error "IOS is not supported"
+#elif TARGET_OS_MAC == 1
+#define HAZAL_PLATFORM_MACOS
+#error "MacOS is not supported"
+#else
+#error "Unknown Apple platform"
+#endif
+#elif defined(__ANDROID__)
+#define HAZAL_PLATFORM_ANDROID
+#error "Android is not supported"
+#elif defined(__LINUX__)
+#error "Linux is not supported"
+#else
+#error "Unknown pltform"
+#endif
+
 #ifdef HAZAL_PLATFORM_WINDOWS
-#if HAZAL_DYNAMIC_LINK
-	#ifdef HAZAL_BUILD_DLL
-		#define HAZAL_API __declspec(dllexport)
-	#else
-		#define HAZAL_API __declspec(dllimport)
-	#endif
+#ifdef HAZAL_DYNAMIC_LINK
+#ifdef HAZAL_BUILD_DLL
+#define HAZAL_API __declspec(dllexport)
+#else
+#define HAZAL_API __declspec(dllimport)
+#endif
 #else
 #define HAZAL_API
 #endif
 #else
-	#error Hazal only supports Windows
+#error Hazal only supports Windows
 #endif
 
 #ifdef HAZAL_ENABLE_ASSERTS

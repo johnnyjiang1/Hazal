@@ -25,7 +25,3 @@
 
 #include "Hazal/Renderer/OrthographicCameraController.h"
 // -----------------------
-
-// ------Entry Point------
-#include "Hazal/Core/EntryPoint.h"
-// -----------------------
