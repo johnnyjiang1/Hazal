@@ -10,31 +10,7 @@ Sandbox2D::Sandbox2D() : Layer("Sandbox2D"), m_CameraController(1280.0f / 720.0f
 
 void Sandbox2D::OnAttach()
 {
-	m_SquareVA = Hazal::VertexArray::Create();
-
-	float square_vertices[] = {
-		-0.5f, -0.5f, 0.0f,
-		 0.5f, -0.5f, 0.0f,
-		 0.5f,  0.5f, 0.0f,
-		-0.5f,  0.5f, 0.0f
-	};
-
-	Hazal::Ref<Hazal::VertexBuffer> squareVB;
-	squareVB.reset(Hazal::VertexBuffer::Create(square_vertices, sizeof(square_vertices)));
-	squareVB->SetLayout({
-		{ Hazal::ShaderDataType::Float3, "a_Position" }
-		});
-	m_SquareVA->AddVertexBuffer(squareVB);
-
-	uint32_t squareIndices[] = {
-		0, 1, 2,
-		2, 3, 0
-	};
-	Hazal::Ref<Hazal::IndexBuffer> squareIB;
-	squareIB.reset(Hazal::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
-	m_SquareVA->SetIndexBuffer(squareIB);
 	
-	m_FlatColorShader = Hazal::Shader::Create("assets/shaders/FlatColorShader.glsl");
 }
 
 void Sandbox2D::OnDetach()
@@ -48,14 +24,9 @@ void Sandbox2D::OnUpdate(Hazal::Timestep ts)
 	Hazal::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 	Hazal::RenderCommand::Clear();
 
-	Hazal::Renderer::BeginScene(m_CameraController.GetCamera());
-
-	std::dynamic_pointer_cast<Hazal::OpenGLShader>(m_FlatColorShader)->Bind();
-	std::dynamic_pointer_cast<Hazal::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat4("u_Color", m_SquareColor);
-
-	Hazal::Renderer::Submit(m_FlatColorShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
-
-	Hazal::Renderer::EndScene();
+	Hazal::Renderer2D::BeginScene(m_CameraController.GetCamera());
+	Hazal::Renderer2D::DrawQuad({ 0.0f,0.0f }, { 1.0f,1.0f }, { 0.8f,0.2f,0.3f,1.0f });
+	Hazal::Renderer2D::EndScene();	
 }
 
 void Sandbox2D::OnImGuiRender()

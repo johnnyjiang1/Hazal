@@ -16,6 +16,7 @@
 
 // --------Renderer--------
 #include "Hazal/Renderer/Renderer.h"
+#include "Hazal/Renderer/Renderer2D.h"
 #include "Hazal/Renderer/RenderCommand.h"
 
 #include "Hazal/Renderer/Buffer.h"
