@@ -19,5 +19,7 @@ private:
 	Hazal::Ref<Hazal::VertexArray> m_SquareVA;
 	Hazal::Ref<Hazal::Shader>  m_FlatColorShader;
 
+	Hazal::Ref<Hazal::Texture2D> m_CheckerBoardTexture;
+
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 };
